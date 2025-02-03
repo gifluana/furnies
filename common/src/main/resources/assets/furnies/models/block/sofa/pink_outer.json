@@ -1,0 +1,6 @@
+{
+    "parent": "furnies:block/template/sofa_outer",
+    "textures": {
+        "1": "furnies:block/sofa/pink"
+    }
+}

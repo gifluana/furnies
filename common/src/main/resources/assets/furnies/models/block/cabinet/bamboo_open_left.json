@@ -1,0 +1,6 @@
+{
+    "parent": "furnies:block/template/cabinet_open_left",
+    "textures": {
+        "2": "furnies:block/cabinet/bamboo"
+    }
+}

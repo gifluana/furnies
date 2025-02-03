@@ -1,0 +1,46 @@
+{
+    "variants": {
+        "style=1,facing=north,type=single": { "model": "furnies:block/sofa/gray" },
+        "style=1,facing=east,type=single": { "model": "furnies:block/sofa/gray", "y": 90 },
+        "style=1,facing=south,type=single": { "model": "furnies:block/sofa/gray", "y": 180 },
+        "style=1,facing=west,type=single": { "model": "furnies:block/sofa/gray", "y": 270 },
+
+        "style=1,facing=north,type=left": { "model": "furnies:block/sofa/gray_left" },
+        "style=1,facing=east,type=left": { "model": "furnies:block/sofa/gray_left", "y": 90 },
+        "style=1,facing=south,type=left": { "model": "furnies:block/sofa/gray_left", "y": 180 },
+        "style=1,facing=west,type=left": { "model": "furnies:block/sofa/gray_left", "y": 270 },
+
+        "style=1,facing=north,type=right": { "model": "furnies:block/sofa/gray_right" },
+        "style=1,facing=east,type=right": { "model": "furnies:block/sofa/gray_right", "y": 90 },
+        "style=1,facing=south,type=right": { "model": "furnies:block/sofa/gray_right", "y": 180 },
+        "style=1,facing=west,type=right": { "model": "furnies:block/sofa/gray_right", "y": 270 },
+
+        "style=1,facing=north,type=middle": { "model": "furnies:block/sofa/gray_middle" },
+        "style=1,facing=east,type=middle": { "model": "furnies:block/sofa/gray_middle", "y": 90 },
+        "style=1,facing=south,type=middle": { "model": "furnies:block/sofa/gray_middle", "y": 180 },
+        "style=1,facing=west,type=middle": { "model": "furnies:block/sofa/gray_middle", "y": 270 },
+
+        "style=1,facing=north,type=inner_left": { "model": "furnies:block/sofa/gray_inner" },
+        "style=1,facing=east,type=inner_left": { "model": "furnies:block/sofa/gray_inner", "y": 90 },
+        "style=1,facing=south,type=inner_left": { "model": "furnies:block/sofa/gray_inner", "y": 180 },
+        "style=1,facing=west,type=inner_left": { "model": "furnies:block/sofa/gray_inner", "y": 270 },
+
+        "style=1,facing=north,type=inner_right": { "model": "furnies:block/sofa/gray_inner", "y": 90 },
+        "style=1,facing=east,type=inner_right": { "model": "furnies:block/sofa/gray_inner", "y": 180 },
+        "style=1,facing=south,type=inner_right": { "model": "furnies:block/sofa/gray_inner", "y": 270 },
+        "style=1,facing=west,type=inner_right": { "model": "furnies:block/sofa/gray_inner" },
+
+        "style=1,facing=north,type=outer_left": { "model": "furnies:block/sofa/gray_outer" },
+        "style=1,facing=east,type=outer_left": { "model": "furnies:block/sofa/gray_outer", "y": 90 },
+        "style=1,facing=south,type=outer_left": { "model": "furnies:block/sofa/gray_outer", "y": 180 },
+        "style=1,facing=west,type=outer_left": { "model": "furnies:block/sofa/gray_outer", "y": 270 },
+
+        "style=1,facing=north,type=outer_right": { "model": "furnies:block/sofa/gray_outer", "y": 90 },
+        "style=1,facing=east,type=outer_right": { "model": "furnies:block/sofa/gray_outer", "y": 180 },
+        "style=1,facing=south,type=outer_right": { "model": "furnies:block/sofa/gray_outer", "y": 270 },
+        "style=1,facing=west,type=outer_right": { "model": "furnies:block/sofa/gray_outer" },
+
+        "style=2": { "model": "furnies:block/sofa/gray_variant2" },
+        "style=3": { "model": "furnies:block/sofa/gray_variant3" }
+    }
+}

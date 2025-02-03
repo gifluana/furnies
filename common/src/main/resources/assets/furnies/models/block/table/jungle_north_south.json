@@ -1,0 +1,6 @@
+{
+    "parent": "furnies:block/template/table_north_south",
+    "textures": {
+        "1": "furnies:block/table/jungle"
+    }
+}

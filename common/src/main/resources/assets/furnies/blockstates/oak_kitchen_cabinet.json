@@ -1,0 +1,154 @@
+{
+    "variants": {
+        "facing=north,type=single,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak"
+        },
+        "facing=north,type=single,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_open"
+        },
+        "facing=north,type=inner_left,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak_inner"
+        },
+        "facing=north,type=inner_left,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_inner_open"
+        },
+        "facing=north,type=inner_right,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak_inner",
+            "y": 90
+        },
+        "facing=north,type=inner_right,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_inner_open",
+            "y": 90
+        },
+        "facing=north,type=outer_left,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak_outer"
+        },
+        "facing=north,type=outer_left,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_outer_open"
+        },
+        "facing=north,type=outer_right,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak_outer",
+            "y": 90
+        },
+        "facing=north,type=outer_right,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_outer_open",
+            "y": 90
+        },
+        "facing=east,type=single,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak",
+            "y": 90
+        },
+        "facing=east,type=single,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_open",
+            "y": 90
+        },
+        "facing=east,type=inner_left,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak_inner",
+            "y": 90
+        },
+        "facing=east,type=inner_left,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_inner_open",
+            "y": 90
+        },
+        "facing=east,type=inner_right,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak_inner",
+            "y": 180
+        },
+        "facing=east,type=inner_right,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_inner_open",
+            "y": 180
+        },
+        "facing=east,type=outer_left,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak_outer",
+            "y": 90
+        },
+        "facing=east,type=outer_left,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_outer_open",
+            "y": 90
+        },
+        "facing=east,type=outer_right,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak_outer",
+            "y": 180
+        },
+        "facing=east,type=outer_right,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_outer_open",
+            "y": 180
+        },
+        "facing=south,type=single,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak",
+            "y": 180
+        },
+        "facing=south,type=single,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_open",
+            "y": 180
+        },
+        "facing=south,type=inner_left,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak_inner",
+            "y": 180
+        },
+        "facing=south,type=inner_left,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_inner_open",
+            "y": 180
+        },
+        "facing=south,type=inner_right,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak_inner",
+            "y": 270
+        },
+        "facing=south,type=inner_right,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_inner_open",
+            "y": 270
+        },
+        "facing=south,type=outer_left,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak_outer",
+            "y": 180
+        },
+        "facing=south,type=outer_left,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_outer_open",
+            "y": 180
+        },
+        "facing=south,type=outer_right,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak_outer",
+            "y": 270
+        },
+        "facing=south,type=outer_right,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_outer_open",
+            "y": 270
+        },
+        "facing=west,type=single,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak",
+            "y": 270
+        },
+        "facing=west,type=single,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_open",
+            "y": 270
+        },
+        "facing=west,type=inner_left,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak_inner",
+            "y": 270
+        },
+        "facing=west,type=inner_left,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_inner_open",
+            "y": 270
+        },
+        "facing=west,type=inner_right,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak_inner"
+        },
+        "facing=west,type=inner_right,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_inner_open"
+        },
+        "facing=west,type=outer_left,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak_outer",
+            "y": 270
+        },
+        "facing=west,type=outer_left,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_outer_open",
+            "y": 270
+        },
+        "facing=west,type=outer_right,open=false": {
+            "model": "furnies:block/kitchen_cabinet/oak_outer"
+        },
+        "facing=west,type=outer_right,open=true": {
+            "model": "furnies:block/kitchen_cabinet/oak_outer_open"
+        }
+    }
+}

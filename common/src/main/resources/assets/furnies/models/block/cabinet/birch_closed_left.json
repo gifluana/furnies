@@ -1,0 +1,6 @@
+{
+    "parent": "furnies:block/template/cabinet_closed_left",
+    "textures": {
+        "2": "furnies:block/cabinet/birch"
+    }
+}

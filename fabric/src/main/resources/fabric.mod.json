@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "furnies",
+  "version": "${version}",
+  "name": "Furnies",
+  "description": "",
+  "authors": [
+    "LunazStudios"
+  ],
+  "contact": {
+    "homepage": "lunazstudios.com"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.lunazstudios.furnies.fabric.FurniesFabric"
+    ],
+    "client": [
+      "com.lunazstudios.furnies.fabric.client.FurniesFabricClient"
+    ]
+  },
+  "mixins": [
+    "furnies.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

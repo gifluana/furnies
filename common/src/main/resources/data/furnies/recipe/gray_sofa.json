@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "sofas",
+    "key": {
+        "#": {
+            "item": "minecraft:gray_wool"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "pattern": [
+        "#  ",
+        "###",
+        "/ /"
+    ],
+    "result": {
+        "count": 4,
+        "id": "furnies:gray_sofa"
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "cabinets",
+    "key": {
+        "#": {
+            "item": "minecraft:jungle_planks"
+        },
+        "/": {
+            "item": "minecraft:barrel"
+        }
+    },
+    "pattern": [
+        "#/#",
+        "###"
+    ],
+    "result": {
+        "count": 3,
+        "id": "furnies:jungle_cabinet"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "furnies:block/template/bar_counter_inner",
+    "textures": {
+        "1": "furnies:block/bar_counter/birch"
+    }
+}

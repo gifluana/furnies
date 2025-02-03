@@ -1,0 +1,6 @@
+{
+    "parent": "furnies:block/template/sofa_left",
+    "textures": {
+        "1": "furnies:block/sofa/cyan"
+    }
+}

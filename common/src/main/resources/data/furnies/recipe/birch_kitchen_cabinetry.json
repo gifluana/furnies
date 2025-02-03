@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "cabinetry",
+    "key": {
+        "#": {
+            "item": "minecraft:birch_planks"
+        },
+        "Q": {
+            "item": "minecraft:quartz_block"
+        }
+    },
+    "pattern": [
+        "QQQ",
+        "###"
+    ],
+    "result": {
+        "count": 3,
+        "id": "furnies:birch_kitchen_cabinetry"
+    }
+}

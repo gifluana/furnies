@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "furnies:block/chair/birch"
+        },
+        "facing=east": {
+            "model": "furnies:block/chair/birch",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "furnies:block/chair/birch",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "furnies:block/chair/birch",
+            "y": 270
+        }
+    }
+}

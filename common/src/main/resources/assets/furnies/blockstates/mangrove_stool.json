@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "furnies:block/stool/mangrove"
+        },
+        "facing=east": {
+            "model": "furnies:block/stool/mangrove",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "furnies:block/stool/mangrove",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "furnies:block/stool/mangrove",
+            "y": 270
+        }
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "open": {
+        "type": "boolean",
+        "default": false,
+        "suffixes": {
+            "true": "_open",
+            "false": ""
+        }
+    },
+    "hinge": {
+        "type": "string",
+        "default": "left",
+        "values": ["left", "right"],
+        "suffixes": {
+            "left": "_left",
+            "right": "_right"
+        }
+    },
+    "type": {
+        "type": "string",
+        "default": "single",
+        "values": ["single", "inner_left", "inner_right", "outer_left", "outer_right"],
+        "suffixes": {
+            "single": "",
+            "inner_left": "_inner",
+            "inner_right": "_inner",
+            "outer_left": "_outer",
+            "outer_right": "_outer"
+        }
+    },
+    "style": {
+        "type": "integer",
+        "default": 1,
+        "values": [1, 2],
+        "suffixes": {
+            "1": "_1",
+            "2": "_2"
+        }
+    }
+}

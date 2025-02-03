@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "bar_counters",
+    "key": {
+        "#": {
+            "item": "minecraft:oak_planks"
+        },
+        "/": {
+            "item": "minecraft:calcite"
+        }
+    },
+    "pattern": [
+        "///",
+        "###"
+    ],
+    "result": {
+        "count": 3,
+        "id": "furnies:oak_bar_counter"
+    }
+}

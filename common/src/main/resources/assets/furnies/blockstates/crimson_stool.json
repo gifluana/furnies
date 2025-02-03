@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "furnies:block/stool/crimson"
+        },
+        "facing=east": {
+            "model": "furnies:block/stool/crimson",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "furnies:block/stool/crimson",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "furnies:block/stool/crimson",
+            "y": 270
+        }
+    }
+}

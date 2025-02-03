@@ -1,0 +1,6 @@
+{
+    "parent": "furnies:block/template/kitchen_cabinet",
+    "textures": {
+        "0": "furnies:block/kitchen_cabinet/acacia"
+    }
+}

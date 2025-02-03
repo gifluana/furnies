@@ -1,0 +1,154 @@
+{
+    "variants": {
+        "facing=north,type=single,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch"
+        },
+        "facing=north,type=single,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_open"
+        },
+        "facing=north,type=inner_left,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch_inner"
+        },
+        "facing=north,type=inner_left,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_inner_open"
+        },
+        "facing=north,type=inner_right,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch_inner",
+            "y": 90
+        },
+        "facing=north,type=inner_right,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_inner_open",
+            "y": 90
+        },
+        "facing=north,type=outer_left,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch_outer"
+        },
+        "facing=north,type=outer_left,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_outer_open"
+        },
+        "facing=north,type=outer_right,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch_outer",
+            "y": 90
+        },
+        "facing=north,type=outer_right,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_outer_open",
+            "y": 90
+        },
+        "facing=east,type=single,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch",
+            "y": 90
+        },
+        "facing=east,type=single,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_open",
+            "y": 90
+        },
+        "facing=east,type=inner_left,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch_inner",
+            "y": 90
+        },
+        "facing=east,type=inner_left,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_inner_open",
+            "y": 90
+        },
+        "facing=east,type=inner_right,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch_inner",
+            "y": 180
+        },
+        "facing=east,type=inner_right,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_inner_open",
+            "y": 180
+        },
+        "facing=east,type=outer_left,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch_outer",
+            "y": 90
+        },
+        "facing=east,type=outer_left,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_outer_open",
+            "y": 90
+        },
+        "facing=east,type=outer_right,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch_outer",
+            "y": 180
+        },
+        "facing=east,type=outer_right,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_outer_open",
+            "y": 180
+        },
+        "facing=south,type=single,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch",
+            "y": 180
+        },
+        "facing=south,type=single,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_open",
+            "y": 180
+        },
+        "facing=south,type=inner_left,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch_inner",
+            "y": 180
+        },
+        "facing=south,type=inner_left,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_inner_open",
+            "y": 180
+        },
+        "facing=south,type=inner_right,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch_inner",
+            "y": 270
+        },
+        "facing=south,type=inner_right,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_inner_open",
+            "y": 270
+        },
+        "facing=south,type=outer_left,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch_outer",
+            "y": 180
+        },
+        "facing=south,type=outer_left,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_outer_open",
+            "y": 180
+        },
+        "facing=south,type=outer_right,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch_outer",
+            "y": 270
+        },
+        "facing=south,type=outer_right,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_outer_open",
+            "y": 270
+        },
+        "facing=west,type=single,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch",
+            "y": 270
+        },
+        "facing=west,type=single,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_open",
+            "y": 270
+        },
+        "facing=west,type=inner_left,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch_inner",
+            "y": 270
+        },
+        "facing=west,type=inner_left,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_inner_open",
+            "y": 270
+        },
+        "facing=west,type=inner_right,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch_inner"
+        },
+        "facing=west,type=inner_right,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_inner_open"
+        },
+        "facing=west,type=outer_left,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch_outer",
+            "y": 270
+        },
+        "facing=west,type=outer_left,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_outer_open",
+            "y": 270
+        },
+        "facing=west,type=outer_right,open=false": {
+            "model": "furnies:block/kitchen_cabinet/birch_outer"
+        },
+        "facing=west,type=outer_right,open=true": {
+            "model": "furnies:block/kitchen_cabinet/birch_outer_open"
+        }
+    }
+}

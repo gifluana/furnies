@@ -1,0 +1,13 @@
+{
+    "values": [
+      {"id": "#furnies:chairs", "required": false},
+      {"id": "#furnies:tables", "required": false},
+      {"id": "#furnies:sofas", "required": false},
+      {"id": "#furnies:cabinets", "required": false},
+      {"id": "#furnies:stools", "required": false},
+      {"id": "#furnies:bar_counters", "required": false},
+      {"id": "#furnies:kitchen_cabinets", "required": false},
+      {"id": "#furnies:kitchen_drawers", "required": false},
+      {"id": "#furnies:kitchen_cabinetry", "required": false}
+    ]
+}

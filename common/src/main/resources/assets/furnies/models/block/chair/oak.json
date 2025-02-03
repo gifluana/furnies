@@ -1,0 +1,6 @@
+{
+    "parent": "furnies:block/template/chair",
+    "textures": {
+        "1": "furnies:block/chair/oak"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "furnies:block/template/stool",
+    "textures": {
+        "1": "furnies:block/stool/acacia"
+    }
+}

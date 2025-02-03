@@ -1,0 +1,6 @@
+{
+    "parent": "furnies:block/template/kitchen_drawer_open",
+    "textures": {
+        "0": "furnies:block/kitchen_drawer/1/birch"
+    }
+}

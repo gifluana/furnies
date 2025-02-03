@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "bar_counters",
+    "key": {
+        "#": {
+            "item": "minecraft:cherry_planks"
+        },
+        "/": {
+            "item": "minecraft:calcite"
+        }
+    },
+    "pattern": [
+        "///",
+        "###"
+    ],
+    "result": {
+        "count": 3,
+        "id": "furnies:cherry_bar_counter"
+    }
+}

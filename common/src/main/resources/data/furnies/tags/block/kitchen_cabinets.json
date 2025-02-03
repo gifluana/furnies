@@ -1,0 +1,16 @@
+{
+	"replace": false,
+	"values": [
+		{"id": "furnies:acacia_kitchen_cabinet", "required": false},
+		{"id": "furnies:bamboo_kitchen_cabinet", "required": false},
+		{"id": "furnies:birch_kitchen_cabinet", "required": false},
+		{"id": "furnies:cherry_kitchen_cabinet", "required": false},
+		{"id": "furnies:crimson_kitchen_cabinet", "required": false},
+		{"id": "furnies:dark_oak_kitchen_cabinet", "required": false},
+		{"id": "furnies:jungle_kitchen_cabinet", "required": false},
+		{"id": "furnies:mangrove_kitchen_cabinet", "required": false},
+		{"id": "furnies:oak_kitchen_cabinet", "required": false},
+		{"id": "furnies:spruce_kitchen_cabinet", "required": false},
+		{"id": "furnies:warped_kitchen_cabinet", "required": false}
+	]
+}

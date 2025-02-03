@@ -1,0 +1,79 @@
+{
+    "variants": {
+        "facing=north,type=single": {
+            "model": "furnies:block/kitchen_cabinetry/spruce"
+        },
+        "facing=north,type=inner_left": {
+            "model": "furnies:block/kitchen_cabinetry/spruce_inner"
+        },
+        "facing=north,type=inner_right": {
+            "model": "furnies:block/kitchen_cabinetry/spruce_inner",
+            "y": 90
+        },
+        "facing=north,type=outer_left": {
+            "model": "furnies:block/kitchen_cabinetry/spruce_outer"
+        },
+        "facing=north,type=outer_right": {
+            "model": "furnies:block/kitchen_cabinetry/spruce_outer",
+            "y": 90
+        },
+        "facing=east,type=single": {
+            "model": "furnies:block/kitchen_cabinetry/spruce",
+            "y": 90
+        },
+        "facing=east,type=inner_left": {
+            "model": "furnies:block/kitchen_cabinetry/spruce_inner",
+            "y": 90
+        },
+        "facing=east,type=inner_right": {
+            "model": "furnies:block/kitchen_cabinetry/spruce_inner",
+            "y": 180
+        },
+        "facing=east,type=outer_left": {
+            "model": "furnies:block/kitchen_cabinetry/spruce_outer",
+            "y": 90
+        },
+        "facing=east,type=outer_right": {
+            "model": "furnies:block/kitchen_cabinetry/spruce_outer",
+            "y": 180
+        },
+        "facing=south,type=single": {
+            "model": "furnies:block/kitchen_cabinetry/spruce",
+            "y": 180
+        },
+        "facing=south,type=inner_left": {
+            "model": "furnies:block/kitchen_cabinetry/spruce_inner",
+            "y": 180
+        },
+        "facing=south,type=inner_right": {
+            "model": "furnies:block/kitchen_cabinetry/spruce_inner",
+            "y": 270
+        },
+        "facing=south,type=outer_left": {
+            "model": "furnies:block/kitchen_cabinetry/spruce_outer",
+            "y": 180
+        },
+        "facing=south,type=outer_right": {
+            "model": "furnies:block/kitchen_cabinetry/spruce_outer",
+            "y": 270
+        },
+        "facing=west,type=single": {
+            "model": "furnies:block/kitchen_cabinetry/spruce",
+            "y": 270
+        },
+        "facing=west,type=inner_left": {
+            "model": "furnies:block/kitchen_cabinetry/spruce_inner",
+            "y": 270
+        },
+        "facing=west,type=inner_right": {
+            "model": "furnies:block/kitchen_cabinetry/spruce_inner"
+        },
+        "facing=west,type=outer_left": {
+            "model": "furnies:block/kitchen_cabinetry/spruce_outer",
+            "y": 270
+        },
+        "facing=west,type=outer_right": {
+            "model": "furnies:block/kitchen_cabinetry/spruce_outer"
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+	"replace": false,
+	"values": [
+		{"id": "furnies:acacia_cabinet", "required": false},
+		{"id": "furnies:bamboo_cabinet", "required": false},
+		{"id": "furnies:birch_cabinet", "required": false},
+		{"id": "furnies:cherry_cabinet", "required": false},
+		{"id": "furnies:crimson_cabinet", "required": false},
+		{"id": "furnies:dark_oak_cabinet", "required": false},
+		{"id": "furnies:jungle_cabinet", "required": false},
+		{"id": "furnies:mangrove_cabinet", "required": false},
+		{"id": "furnies:oak_cabinet", "required": false},
+		{"id": "furnies:spruce_cabinet", "required": false},
+		{"id": "furnies:warped_cabinet", "required": false}
+	]
+}

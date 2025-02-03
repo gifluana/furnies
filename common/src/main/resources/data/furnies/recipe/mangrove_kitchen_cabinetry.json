@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "cabinetry",
+    "key": {
+        "#": {
+            "item": "minecraft:mangrove_planks"
+        },
+        "Q": {
+            "item": "minecraft:quartz_block"
+        }
+    },
+    "pattern": [
+        "QQQ",
+        "###"
+    ],
+    "result": {
+        "count": 3,
+        "id": "furnies:mangrove_kitchen_cabinetry"
+    }
+}

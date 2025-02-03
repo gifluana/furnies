@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "cabinets",
+    "key": {
+        "#": {
+            "item": "minecraft:dark_oak_planks"
+        },
+        "/": {
+            "item": "minecraft:barrel"
+        }
+    },
+    "pattern": [
+        "//",
+        "##"
+    ],
+    "result": {
+        "count": 4,
+        "id": "furnies:dark_oak_kitchen_cabinet"
+    }
+}

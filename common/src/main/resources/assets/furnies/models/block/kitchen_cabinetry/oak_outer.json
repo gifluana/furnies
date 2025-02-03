@@ -1,0 +1,6 @@
+{
+    "parent": "furnies:block/template/kitchen_cabinetry_outer",
+    "textures": {
+        "0": "furnies:block/kitchen_cabinetry/oak"
+    }
+}
