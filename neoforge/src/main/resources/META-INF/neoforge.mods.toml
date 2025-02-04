@@ -9,7 +9,7 @@ version = "${version}"
 displayName = "Furnies"
 authors = "LunazStudios"
 description = '''
-
+Furnies adds stylish and functional furniture to Minecraft, enhancing interior and exterior design.
 '''
 logoFile = "icon.png"
 

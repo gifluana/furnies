@@ -3,12 +3,13 @@
   "id": "furnies",
   "version": "${version}",
   "name": "Furnies",
-  "description": "",
+  "description": "Furnies adds stylish and functional furniture to Minecraft, enhancing interior and exterior design.",
   "authors": [
     "LunazStudios"
   ],
   "contact": {
-    "homepage": "lunazstudios.com"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/furnies",
+    "issues": "https://github.com/gifluana/furnies/issues"
   },
   "license": "MIT",
   "icon": "icon.png",
