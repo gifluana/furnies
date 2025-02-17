@@ -23,7 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -31,7 +31,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class FridgeBlock extends BaseEntityBlock {
 
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
 
     private final Block freezerBlock;
@@ -108,7 +108,7 @@ public class FridgeBlock extends BaseEntityBlock {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof FridgeBlockEntity BE) {
             player.openMenu(BE);
-            PiglinAi.angerNearbyPiglins(player, true);
+            PiglinAi.angerNearbyPiglins((ServerLevel) level, player, true);
         }
         return InteractionResult.CONSUME;
     }
@@ -158,7 +158,7 @@ public class FridgeBlock extends BaseEntityBlock {
         BlockPos pos = context.getClickedPos();
         BlockPos abovePos = pos.above();
         BlockState aboveState = world.getBlockState(abovePos);
-        if (pos.getY() < world.getMaxBuildHeight() - 1 && aboveState.canBeReplaced(context)) {
+        if (pos.getY() < world.getMaxY() - 1 && aboveState.canBeReplaced(context)) {
             return this.defaultBlockState()
                     .setValue(FACING, context.getHorizontalDirection().getOpposite())
                     .setValue(OPEN, false);

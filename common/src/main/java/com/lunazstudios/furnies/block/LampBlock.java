@@ -8,26 +8,25 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -46,7 +45,7 @@ public class LampBlock extends Block implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-    public static final DirectionProperty FACING = FBlockStateProperties.FACING_EXCEPT_DOWN;
+    public static final EnumProperty<Direction> FACING = FBlockStateProperties.FACING_EXCEPT_DOWN;
     public static final IntegerProperty LEVEL = FBlockStateProperties.LEVEL_1_3;
     public static final BooleanProperty BASE = FBlockStateProperties.BASE;
 
@@ -102,25 +101,57 @@ public class LampBlock extends Block implements SimpleWaterloggedBlock {
         return clickedFace != Direction.DOWN ? blockstate.setValue(FACING, clickedFace).setValue(WATERLOGGED, waterlogged) : null;
     }
 
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
-        if (!state.canSurvive(level, currentPos)) return Blocks.AIR.defaultBlockState();
+    @Override
+    protected BlockState updateShape(BlockState state, LevelReader levelReader, ScheduledTickAccess scheduledTickAccess,
+                                     BlockPos pos, Direction direction, BlockPos neighborPos,
+                                     BlockState neighborState, RandomSource randomSource) {
+        // Check if the block can survive; if not, return air.
+        if (!state.canSurvive(levelReader, pos)) {
+            return Blocks.AIR.defaultBlockState();
+        }
 
-        if (state.getValue(WATERLOGGED)) level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+        // Schedule water tick if waterlogged.
+        if (state.getValue(WATERLOGGED)) {
+            if (levelReader instanceof Level level) {
+                level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+            }
+        }
 
+        // Apply custom connection logic when facing UP and the update comes from above or below.
         if (state.getValue(FACING) == Direction.UP && (direction == Direction.UP || direction == Direction.DOWN)) {
-            BlockState aState = level.getBlockState(currentPos.above());
-            BlockState bState = level.getBlockState(currentPos.below());
-            boolean aConnect = (aState.getBlock() instanceof LampBlock lampBlock && lampBlock.getColor() == this.getColor() && aState.getValue(FACING) == Direction.UP) || (aState.getBlock() instanceof LampConnectorBlock connectorBlock && connectorBlock.getColor() == this.getColor());
-            boolean bConnect = (bState.getBlock() instanceof LampBlock lampBlock && lampBlock.getColor() == this.getColor() && bState.getValue(FACING) == Direction.UP) || (bState.getBlock() instanceof LampConnectorBlock connectorBlock && connectorBlock.getColor() == this.getColor());
+            BlockState aState = levelReader.getBlockState(pos.above());
+            BlockState bState = levelReader.getBlockState(pos.below());
+            boolean aConnect = (aState.getBlock() instanceof LampBlock lampBlock &&
+                    lampBlock.getColor() == this.getColor() &&
+                    aState.getValue(FACING) == Direction.UP)
+                    || (aState.getBlock() instanceof LampConnectorBlock connectorBlock &&
+                    connectorBlock.getColor() == this.getColor());
+            boolean bConnect = (bState.getBlock() instanceof LampBlock lampBlock &&
+                    lampBlock.getColor() == this.getColor() &&
+                    bState.getValue(FACING) == Direction.UP)
+                    || (bState.getBlock() instanceof LampConnectorBlock connectorBlock &&
+                    connectorBlock.getColor() == this.getColor());
 
-            if (aConnect && !bConnect) state = getLampConnectorByColor(color).defaultBlockState().setValue(BASE, true).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
-            else if (!aConnect && bConnect) state = state.setValue(BASE, false);
-            else if (aConnect) state = getLampConnectorByColor(color).defaultBlockState().setValue(BASE, false).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
-            else state = state.setValue(BASE, true);
+            if (aConnect && !bConnect) {
+                state = getLampConnectorByColor(color)
+                        .defaultBlockState()
+                        .setValue(BASE, true)
+                        .setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+            } else if (!aConnect && bConnect) {
+                state = state.setValue(BASE, false);
+            } else if (aConnect) {
+                state = getLampConnectorByColor(color)
+                        .defaultBlockState()
+                        .setValue(BASE, false)
+                        .setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+            } else {
+                state = state.setValue(BASE, true);
+            }
         }
 
         return state;
     }
+
 
     public FluidState getFluidState(BlockState state) {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
@@ -134,7 +165,7 @@ public class LampBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, @Nullable Orientation orientation, boolean bl) {
         if (level.isClientSide) return;
 
         BlockState below = level.getBlockState(pos.below());
@@ -146,13 +177,14 @@ public class LampBlock extends Block implements SimpleWaterloggedBlock {
             }
             state = state.setValue(POWERED, powered);
         }
-        level.setBlock(pos, state, 3);
+        level.setBlock(pos, state, 3);;
     }
 
+
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    protected InteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (player.getItemInHand(hand).is(FItemTags.LAMPS) && state.getValue(FACING) == Direction.UP && hitResult.getDirection() == Direction.UP) {
-            return ItemInteractionResult.FAIL;
+            return InteractionResult.FAIL;
         }
         if (player.isCrouching()) {
             int light = state.getValue(LEVEL);
@@ -164,7 +196,7 @@ public class LampBlock extends Block implements SimpleWaterloggedBlock {
         }
         level.setBlock(pos, state, 3);
         level.playSound(null, pos, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 1.0f, 1.0f);
-        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        return InteractionResult.SUCCESS;
     }
 
     @Override

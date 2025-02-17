@@ -14,9 +14,7 @@ import net.minecraft.world.entity.monster.piglin.PiglinAi;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
@@ -38,7 +36,7 @@ public class KitchenDrawerBlock extends BaseEntityBlock implements HammerableBlo
     public MapCodec<KitchenDrawerBlock> codec() {
         return CODEC;
     }
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
     public static final IntegerProperty STYLE = FBlockStateProperties.KITCHEN_DRAWER_STYLE;
@@ -104,18 +102,17 @@ public class KitchenDrawerBlock extends BaseEntityBlock implements HammerableBlo
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof KitchenDrawerBlockEntity drawerBE) {
             player.openMenu(drawerBE);
-            PiglinAi.angerNearbyPiglins(player, true);
+            PiglinAi.angerNearbyPiglins((ServerLevel) level, player, true);
         }
         return InteractionResult.CONSUME;
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+    protected InteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
         InteractionResult result = HammerableBlock.super.handleHammerInteraction(itemStack, blockState, level, blockPos, player, interactionHand, blockHitResult);
         if (result.consumesAction()) {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            return InteractionResult.PASS;
         }
-
         return super.useItemOn(itemStack, blockState, level, blockPos, player, interactionHand, blockHitResult);
     }
 
@@ -187,12 +184,17 @@ public class KitchenDrawerBlock extends BaseEntityBlock implements HammerableBlo
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
+    protected BlockState updateShape(BlockState state, LevelReader levelReader, ScheduledTickAccess scheduledTickAccess,
+                                     BlockPos pos, Direction direction, BlockPos neighborPos,
+                                     BlockState neighborState, RandomSource randomSource) {
         if (state.getValue(WATERLOGGED)) {
-            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+            if (levelReader instanceof Level level) {
+                level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+            }
         }
         return state;
     }
+
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

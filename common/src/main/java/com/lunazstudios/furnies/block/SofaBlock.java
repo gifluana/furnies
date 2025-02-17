@@ -7,16 +7,14 @@ import com.lunazstudios.furnies.util.block.HammerableBlock;
 import com.lunazstudios.furnies.util.block.ShapeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
@@ -33,7 +31,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock, HammerableBlock {
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final EnumProperty<SofaType> TYPE = FBlockStateProperties.SOFA_TYPE;
     public static final IntegerProperty STYLE = FBlockStateProperties.STYLE;
@@ -153,13 +151,13 @@ public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock, Hamm
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        InteractionResult result = HammerableBlock.super.handleHammerInteraction(itemStack, state, level, pos, player, hand, hit);
+    protected InteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand interactionHand, BlockHitResult hit) {
+        InteractionResult result = HammerableBlock.super.handleHammerInteraction(itemStack, blockState, level, pos, player, interactionHand, hit);
         if (result.consumesAction()) {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            return InteractionResult.PASS;
         }
 
-        return super.useItemOn(itemStack, state, level, pos, player, hand, hit);
+        return super.useItemOn(itemStack, blockState, level, pos, player, interactionHand, hit);
     }
 
     @Override
@@ -213,12 +211,23 @@ public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock, Hamm
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
+    protected BlockState updateShape(BlockState state, LevelReader levelReader, ScheduledTickAccess scheduledTickAccess,
+                                     BlockPos pos, Direction direction, BlockPos neighborPos,
+                                     BlockState neighborState, RandomSource randomSource) {
         if (state.getValue(WATERLOGGED)) {
-            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+            if (levelReader instanceof Level level) {
+                level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+            }
         }
 
-        return direction.getAxis().isHorizontal() ? state.setValue(TYPE, getConnection(state, (Level)level, currentPos)) : super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
+        if (direction.getAxis().isHorizontal()) {
+            if (levelReader instanceof Level level) {
+                return state.setValue(TYPE, getConnection(state, level, pos));
+            }
+            return state;
+        }
+
+        return super.updateShape(state, levelReader, scheduledTickAccess, pos, direction, neighborPos, neighborState, randomSource);
     }
 
     @Override

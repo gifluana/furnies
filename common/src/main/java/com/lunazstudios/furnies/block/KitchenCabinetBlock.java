@@ -16,9 +16,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.monster.piglin.PiglinAi;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -39,7 +37,7 @@ public class KitchenCabinetBlock extends BaseEntityBlock {
     public MapCodec<KitchenCabinetBlock> codec() {
         return CODEC;
     }
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
     public static final EnumProperty<KitchenCabinetType> TYPE = FBlockStateProperties.KITCHEN_CABINET_TYPE;
@@ -113,7 +111,7 @@ public class KitchenCabinetBlock extends BaseEntityBlock {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof KitchenCabinetBlockEntity cabinetBE) {
             player.openMenu(cabinetBE);
-            PiglinAi.angerNearbyPiglins(player, true);
+            PiglinAi.angerNearbyPiglins((ServerLevel) level, player, true);
         }
         return InteractionResult.CONSUME;
     }
@@ -223,15 +221,25 @@ public class KitchenCabinetBlock extends BaseEntityBlock {
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState,
-                                  LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
+    protected BlockState updateShape(BlockState state, LevelReader levelReader, ScheduledTickAccess scheduledTickAccess,
+                                     BlockPos pos, Direction direction, BlockPos neighborPos,
+                                     BlockState neighborState, RandomSource randomSource) {
         if (state.getValue(WATERLOGGED)) {
-            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+            if (levelReader instanceof Level level) {
+                level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+            }
         }
-        return direction.getAxis().isHorizontal()
-                ? state.setValue(TYPE, getConnection(state, (Level) level, currentPos))
-                : super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
+
+        if (direction.getAxis().isHorizontal()) {
+            if (levelReader instanceof Level level) {
+                return state.setValue(TYPE, getConnection(state, level, pos));
+            }
+            return state;
+        }
+
+        return super.updateShape(state, levelReader, scheduledTickAccess, pos, direction, neighborPos, neighborState, randomSource);
     }
+
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

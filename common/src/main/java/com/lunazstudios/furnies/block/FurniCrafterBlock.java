@@ -45,18 +45,16 @@ public class FurniCrafterBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos,
-                                              Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
-        if (!pLevel.isClientSide()) {
-            BlockEntity entity = pLevel.getBlockEntity(pPos);
+    protected InteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+        if (!level.isClientSide()) {
+            BlockEntity entity = level.getBlockEntity(blockPos);
             if(entity instanceof FurniCrafterBlockEntity furniCrafterBE) {
-                pPlayer.openMenu(new SimpleMenuProvider(furniCrafterBE, Component.literal("FurniCrafter")));
+                player.openMenu(new SimpleMenuProvider(furniCrafterBE, Component.literal("FurniCrafter")));
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
         }
-
-        return ItemInteractionResult.sidedSuccess(pLevel.isClientSide());
+        return InteractionResult.SUCCESS;
     }
 
     @Override
